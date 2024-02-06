@@ -1,11 +1,11 @@
 click
 Flask
-gunicorn==20.1.0
+gunicorn
 itsdangerous
 Jinja2
 MarkupSafe
 Werkzeug
-eventlet==0.30.2
+eventlet
 Flask-SocketIO
 pandas
 pytz
