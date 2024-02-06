@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epstein Hillel Calendar</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="/static/main.js"></script>
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+</head>
+<body>
+    <main>
+        <div class="background-img">&nbsp;</div>
+        <div class="panel">
+            <h1>Epstein Hillel School</h1>
+            <h2></h2>
+            <h4 style="color: yellow; font-size: 1.5rem;">Yellow - 8th Special</h4>
+            <h4 style="color: #e0464d; font-size: 1.5rem;">Red - 7/8th grade</h4>
+            <h4 style="color: #425beb; font-size: 1.5rem;">Blue - 6th grade</h4>
+            <h4 style="color: #1aa356; font-size: 1.5rem; margin-bottom: 2rem;">Green - 5th grade</h3>
+            {% for i in range(length) %}
+            {% set details = [data[data.Day == "Monday"].Time.value_counts().index.tolist(), data[data.Day == "Monday"].Class.values.tolist()] %}
+            {% if day == "Monday" and righttime == details[0][i] %}
+            <h2 class="student-subjects">
+                {% if details[1][i].split(" - ")[1].find("/") | string != "-1": %}
+                <h2 class="student-subjects" style="color: yellow; margin-bottom: 0;">8th Special - {{ details[1][i].split(" - ")[1] | safe }}</h2><br class="student-subjects">
+                {% else %}
+                <h2 class="student-subjects" style="color: #e0464d; margin-bottom: 0;">7-8th - {{ details[1][i].split(" - ")[1] | safe }}</h2><br class="student-subjects">
+                {% endif %}
+                <h2 class="student-subjects" style="color: #425beb; margin-bottom: 0;">6th - {{ details[1][i].split(" - ")[3] | safe }}</h2><br class="student-subjects">
+                <h2 class="student-subjects" style="color: #1aa356; margin-bottom: 0;">5th - {{ details[1][i].split(" - ")[5] | safe }}</h2><br class="student-subjects">
+            </h2>
+            {% endif %}
+            {% set details2 = [data[data.Day == "Tuesday"].Time.value_counts().index.tolist(), data[data.Day == "Tuesday"].Class.values.tolist()] %}
+            {% if day == "Tuesday" and righttime == details2[0][i] %}
+            <h2 class="student-subjects">
+                {% if details2[1][i].split(" - ")[1].find("/") | string != "-1": %}
+                <h2 class="student-subjects" style="color: yellow; margin-bottom: 0;">8th Special - {{ details2[1][i].split(" - ")[1] | safe }}</h2><br class="student-subjects">
+                {% else %}
+                <h2 class="student-subjects" style="color: #e0464d; margin-bottom: 0;">7-8th - {{ details2[1][i].split(" - ")[1] | safe }}</h2><br class="student-subjects">
+                {% endif %}
+                <h2 class="student-subjects" style="color: #425beb; margin-bottom: 0;">6th - {{ details2[1][i].split(" - ")[3] | safe }}</h2><br class="student-subjects">
+                <h2 class="student-subjects" style="color: #1aa356; margin-bottom: 0;">5th - {{ details2[1][i].split(" - ")[5] | safe }}</h2><br class="student-subjects">
+            </h2>
+            {% endif %}
+            {% set details3 = [data[data.Day == "Wednesday"].Time.value_counts().index.tolist(), data[data.Day == "Wednesday"].Class.values.tolist()] %}
+            {% if day == "Wednesday" and righttime == details3[0][i] %}
+            <h2 class="student-subjects">
+                {% if details3[1][i].split(" - ")[1].find("/") | string != "-1": %}
+                <h2 class="student-subjects" style="color: yellow; margin-bottom: 0;">8th Special - {{ details3[1][i].split(" - ")[1] | safe }}</h2><br class="student-subjects">
+                {% else %}
+                <h2 class="student-subjects" style="color: #e0464d; margin-bottom: 0;">7-8th - {{ details3[1][i].split(" - ")[1] | safe }}</h2><br class="student-subjects">
+                {% endif %}
+                <h2 class="student-subjects" style="color: #425beb; margin-bottom: 0;">6th - {{ details3[1][i].split(" - ")[3] | safe }}</h2><br class="student-subjects">
+                <h2 class="student-subjects" style="color: #1aa356; margin-bottom: 0;">5th - {{ details3[1][i].split(" - ")[5] | safe }}</h2><br class="student-subjects">
+            </h2>
+            {% endif %}
+            {% set details4 = [data[data.Day == "Thursday"].Time.value_counts().index.tolist(), data[data.Day == "Thursday"].Class.values.tolist()] %}
+            {% if day == "Thursday" and righttime == details4[0][i] %}
+            <h2 class="student-subjects">
+                {% if details4[1][i].split(" - ")[1].find("/") | string != "-1": %}
+                <h2 class="student-subjects" style="color: yellow; margin-bottom: 0;">8th Special - {{ details4[1][i].split(" - ")[1] | safe }}</h2><br class="student-subjects">
+                {% else %}
+                <h2 class="student-subjects" style="color: #e0464d; margin-bottom: 0;">7-8th - {{ details4[1][i].split(" - ")[1] | safe }}</h2><br class="student-subjects">
+                {% endif %}
+                <h2 class="student-subjects" style="color: #425beb; margin-bottom: 0;">6th - {{ details4[1][i].split(" - ")[3] | safe }}</h2><br class="student-subjects">
+                <h2 class="student-subjects" style="color: #1aa356; margin-bottom: 0;">5th - {{ details4[1][i].split(" - ")[5] | safe }}</h2><br class="student-subjects">
+            </h2>
+            {% endif %}
+            {% set details5 = [data[data.Day == "Friday"].Time.value_counts().index.tolist(), data[data.Day == "Friday"].Class.values.tolist()] %}
+            {% if day == "Friday" and righttime == details5[0][i] %}
+            <h2 class="student-subjects">
+                {% if details5[1][i].split(" - ")[1].find("/") | string != "-1": %}
+                <h2 class="student-subjects" style="color: yellow; margin-bottom: 0;">8th Special - {{ details5[1][i].split(" - ")[1] | safe }}</h2><br class="student-subjects">
+                {% else %}
+                <h2 class="student-subjects" style="color: #e0464d; margin-bottom: 0;">7-8th - {{ details5[1][i].split(" - ")[1] | safe }}</h2><br class="student-subjects">
+                {% endif %}
+                <h2 class="student-subjects" style="color: #425beb; margin-bottom: 0;">6th - {{ details5[1][i].split(" - ")[3] | safe }}</h2><br class="student-subjects">
+                <h2 class="student-subjects" style="color: #1aa356; margin-bottom: 0;">5th - {{ details5[1][i].split(" - ")[5] | safe }}</h2><br class="student-subjects">
+            </h2>
+            {% endif %}
+            {% endfor %}
+            {% if righttime == None and day in ["Monday", "Tuesday", "Wednesday", "Thursday"] %}
+            <h2 class="student-subjects">Have a good evening!</h2>
+            {% elif righttime == None and day in ["Friday", "Saturday", "Sunday"] %}
+            <h2 class="student-subjects">Have a good weekend!</h2>
+            {% endif %}
+        </div>
+        <div class="calendar">
+            <div class="blocks">
+                <h3>Blocks</h3>
+                {% for i in data.Block.value_counts().index.tolist() %}
+                <h3>Block {{ i }}</h3>
+                {% endfor %}
+            </div>
+            <div class="main-calendar">
+                <div class="days">
+                    {% for i in data.Day.value_counts().index.tolist() %}
+                    <h3>{{ i }}</h3>
+                    {% endfor %}
+                </div>
+                <div class="days-div">
+                    <div class="monday">
+                        {% set details = [data[data.Day == "Monday"].Time.value_counts().index.tolist(), data[data.Day == "Monday"].Class.values.tolist()] %}
+                        {% for i in range(length) %}
+                        <div class="block" 
+                        style="{% if day == 'Monday' and righttime == details[0][i] %}
+                        background-color: rgba(120, 120, 120, 0.7);
+                        {% endif %}">
+                            <p>{{ details[0][i] }}</p>
+                            <p>
+                                {% if details[1][i].split(" - ")[1].find("/") | string != "-1": %}
+                                <p style="color: #e6d709; margin-bottom: 2px; font-size: 0.6rem;">{{ details[1][i].split(" - ")[1] | safe }}</p>
+                                {% else %}
+                                <p style="color: #e0464d; margin-bottom: 2px; font-size: 0.6rem;">{{ details[1][i].split(" - ")[1] | safe }}</p>
+                                {% endif %}
+                                <p style="color: #425beb; margin-bottom: 2px; font-size: 0.6rem;">{{ details[1][i].split(" - ")[3] | safe }}</p>
+                                <p style="color: #1aa356; font-size: 0.6rem;">{{ details[1][i].split(" - ")[5] | safe }}</p>
+                            </p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="tuesday">
+                        {% set details2 = [data[data.Day == "Tuesday"].Time.value_counts().index.tolist(), data[data.Day == "Tuesday"].Class.values.tolist()] %}
+                        {% for i in range(length) %}
+                        <div class="block" 
+                        style="{% if day == 'Tuesday' and righttime == details2[0][i] %}
+                        background-color: rgba(120, 120, 120, 0.7);
+                        {% endif %}">
+                          <p>{{ details2[0][i] }}</p>
+                          <p>
+                            {% if details2[1][i].split(" - ")[1].find("/") | string != "-1": %}
+                            <p style="color: #e6d709; margin-bottom: 2px; font-size: 0.6rem;">{{ details2[1][i].split(" - ")[1] | safe }}</p>
+                            {% else %}
+                            <p style="color: #e0464d; margin-bottom: 2px; font-size: 0.6rem;">{{ details2[1][i].split(" - ")[1] | safe }}</p>
+                            {% endif %}
+                            <p style="color: #425beb; margin-bottom: 2px; font-size: 0.6rem;">{{ details2[1][i].split(" - ")[3] | safe }}</p>
+                            <p style="color: #1aa356; font-size: 0.6rem;">{{ details2[1][i].split(" - ")[5] | safe }}</p>
+                        </p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="wednesday">
+                        {% set details3 = [data[data.Day == "Wednesday"].Time.value_counts().index.tolist(), data[data.Day == "Wednesday"].Class.values.tolist()] %}
+                        {% for i in range(length) %}
+                        <div class="block"
+                        style="{% if day == 'Wednesday' and righttime == details3[0][i] %}
+                        background-color: rgba(120, 120, 120, 0.7);
+                        {% endif %}">
+                            <p>{{ details3[0][i] }}</p>
+                            <p>
+                                {% if details3[1][i].split(" - ")[1].find("/") | string != "-1": %}
+                                <p style="color: #e6d709; margin-bottom: 2px; font-size: 0.6rem;">{{ details3[1][i].split(" - ")[1] | safe }}</p>
+                                {% else %}
+                                <p style="color: #e0464d; margin-bottom: 2px; font-size: 0.6rem;">{{ details3[1][i].split(" - ")[1] | safe }}</p>
+                                {% endif %}
+                                <p style="color: #425beb; margin-bottom: 2px; font-size: 0.6rem;">{{ details3[1][i].split(" - ")[3] | safe }}</p>
+                                <p style="color: #1aa356; font-size: 0.6rem;">{{ details3[1][i].split(" - ")[5] | safe }}</p>
+                            </p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="thursday">
+                        {% set details4 = [data[data.Day == "Thursday"].Time.value_counts().index.tolist(), data[data.Day == "Thursday"].Class.values.tolist()] %}
+                        {% for i in range(length) %}
+                        <div class="block" 
+                        style="{% if day == 'Thursday' and righttime == details4[0][i] %}
+                        background-color: rgba(120, 120, 120, 0.7);
+                        {% endif %}">
+                            <p>{{ details4[0][i] }}</p>
+                            <p>
+                                {% if details4[1][i].split(" - ")[1].find("/") | string != "-1": %}
+                                <p style="color: #e6d709; margin-bottom: 2px; font-size: 0.6rem;">{{ details4[1][i].split(" - ")[1] | safe }}</p>
+                                {% else %}
+                                <p style="color: #e0464d; margin-bottom: 2px; font-size: 0.6rem;">{{ details4[1][i].split(" - ")[1] | safe }}</p>
+                                {% endif %}
+                                <p style="color: #425beb; margin-bottom: 2px; font-size: 0.6rem;">{{ details4[1][i].split(" - ")[3] | safe }}</p>
+                                <p style="color: #1aa356; font-size: 0.6rem;">{{ details4[1][i].split(" - ")[5] | safe }}</p>
+                            </p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="friday">
+                        {% set details5 = [data[data.Day == "Friday"].Time.value_counts().index.tolist(), data[data.Day == "Friday"].Class.values.tolist()] %}
+                        {% for i in range(length) %}
+                        <div class="block" 
+                        style="{% if day == 'Friday' and righttime == details5[0][i] %}
+                        background-color: rgba(120, 120, 120, 0.7);
+                        {% endif %}">
+                            <p>{{ details5[0][i] }}</p>
+                            <p>
+                                {% if details5[1][i].split(" - ")[1].find("/") | string != "-1": %}
+                                <p style="color: #e6d709; margin-bottom: 2px; font-size: 0.6rem;">{{ details5[1][i].split(" - ")[1] | safe }}</p>
+                                {% else %}
+                                <p style="color: #e0464d; margin-bottom: 2px; font-size: 0.6rem;">{{ details5[1][i].split(" - ")[1] | safe }}</p>
+                                {% endif %}
+                                <p style="color: #425beb; margin-bottom: 2px; font-size: 0.6rem;">{{ details5[1][i].split(" - ")[3] | safe }}</p>
+                                <p style="color: #1aa356; font-size: 0.6rem;">{{ details5[1][i].split(" - ")[5] | safe }}</p>
+                            </p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf-8">
+        var socket = io();
+        socket.on("retrieve_data", (data) => {
+            if (data.day.toString() !== "Saturday" && data.day.toString() !== "Sunday") {
+                if (data["righttime"] == null && data["day"] == "Friday") {
+                    document.querySelectorAll(".student-subjects").forEach(block => block.parentNode.removeChild(block))
+                    var newitem = document.createElement("h2")
+                    newitem.textContent = "Have a good weekend!"
+                    document.querySelector(".panel").appendChild(newitem)
+                    newitem.classList.add("student-subjects")
+                }
+                if (data["righttime"] == null && ["Monday", "Tuesday", "Wednesday", "Thursday"].includes(data["day"])) {
+                    document.querySelectorAll(".student-subjects").forEach(block => block.parentNode.removeChild(block))
+                  if (Number(data["time"].split(":")[0]) < 8) {
+                    var newitem = document.createElement("h2")
+                    newitem.textContent = "Good morning!"
+                    document.querySelector(".panel").appendChild(newitem)
+                    newitem.classList.add("student-subjects")
+                  } else {
+                    var newitem = document.createElement("h2")
+                    newitem.textContent = "Have a good evening!"
+                    document.querySelector(".panel").appendChild(newitem)
+                    newitem.classList.add("student-subjects")
+                  }
+                }
+                if (data["righttime"] != null) {
+                    document.querySelectorAll(`.${data["day"].toLowerCase()} .block`).forEach(block => {
+                        if (block.querySelectorAll("p")[0].textContent == data["righttime"]) {
+                            var paras = block.querySelectorAll("p")
+                            newParas = []
+                            paras.forEach(p => {
+                                if (p.textContent.length > 1) {
+                                    newParas.push(p.textContent)
+                                }
+                            })
+                            document.querySelectorAll(".student-subjects").forEach(block => block.parentNode.removeChild(block))
+                            if (newParas[2].includes("/") === true) {
+                                var grade8 = document.createElement("h2")
+                                grade8.style = "color: yellow; margin-bottom: 0; margin-top: 1rem;"
+                                grade8.textContent = "8th Special - " + newParas[2]
+                                grade8.classList.add("student-subjects")
+                                document.querySelector(".panel").appendChild(grade8)
+                            } else {
+                                var grade7 = document.createElement("h2")
+                                grade7.style = "color: #e0464d; margin-bottom: 0; margin-top: 1rem;"
+                                grade7.textContent = "7-8th - " + newParas[2]
+                                grade7.classList.add("student-subjects")
+                                document.querySelector(".panel").appendChild(grade7)
+                            }
+                            var grade6 = document.createElement("h2")
+                            grade6.style = "color: #425beb; margin-bottom: 0; margin-top: 1rem;"
+                            grade6.textContent = "6th - " + newParas[3]
+                            grade6.classList.add("student-subjects")
+                            document.querySelector(".panel").appendChild(grade6)
+                            var grade5 = document.createElement("h2")
+                            grade5.style = "color: #1aa356; margin-bottom: 0; margin-top: 1rem;"
+                            grade5.textContent = "5th - " + newParas[4]
+                            grade5.classList.add("student-subjects")
+                            document.querySelector(".panel").appendChild(grade5)
+                        }
+                    })
+                }
+                document.querySelectorAll(".block").forEach(block => {
+                    block.style = "background-color: none;"
+                })
+                document.querySelectorAll(`.${data["day"].toLowerCase()} .block`).forEach(block => {
+                    if (block.querySelector("p").textContent == data["righttime"]) {
+                        block.style = "background-color: rgba(120, 120, 120, 0.7);"
+                    } else {
+                        block.style = "background-color: none;"
+                    }
+                })
+            } else {
+                document.querySelectorAll(".student-subjects").forEach(block => block.parentNode.removeChild(block))
+                var newitem = document.createElement("h2")
+                newitem.textContent = "Have a good weekend!"
+                document.querySelector(".panel").appendChild(newitem)
+                newitem.classList.add("student-subjects")
+            }
+        })
+        setInterval(() => {
+            socket.emit("getdata")
+        }, 1000)
+    </script>
+</body>
+</html>

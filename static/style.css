@@ -1,0 +1,147 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+.background-img {
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url(/static/images/background.png);
+  filter: brightness(3);
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+main {
+    
+    width: 100%;
+    min-height: 50rem;
+  height: 100vh;
+    background-size: 100% 100%;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 45%;
+    height: 80%;
+}
+
+main h1 {
+    background-image: linear-gradient(to right, #00a8a8, #00a8a8, #21c24c, #118530);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 3rem;
+    text-align: center;
+    text-shadow: -3px -3px 0.1rem rgba(255, 255, 255, 0.9);
+}
+
+main h2 {
+    color: white;
+    font-weight: 900;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+main h3 {
+    color: black;
+    font-size: 1.5rem;
+    text-align: center;
+    height: 15%;
+    width: 100%;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calendar {
+    width: 50rem;
+    height: 41rem;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    overflow: hidden;
+    background-color: white;
+}
+
+.blocks {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+    width: 15%;
+    height: 100%;
+}
+
+.days {
+    display: flex;
+    width: 100%;
+    font-size: 2rem;
+}
+
+.days h3 {
+    height: 3rem;
+    width: 20%;
+    font-size: 1.25rem;
+}
+
+.main-calendar {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-calendar p {
+    font-size: .85rem;
+}
+
+.main-calendar .block {
+    height: 13.3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-weight: 800;
+    border: 2px solid white;
+    flex-direction: column;
+    text-align: center;
+}
+
+.monday, .tuesday, .wednesday, .thursday, .friday {
+    width: 20%;
+}
+
+.days-div {
+    width: 100%;
+    display: flex;
+  height: 70%;
+}
+
+.panel img {
+  width: 10rem;
+  height: 10rem;
+}
