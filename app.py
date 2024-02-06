@@ -181,4 +181,4 @@ def gettime():
 if __name__ == "__main__":
   app.jinja_env.auto_reload = True
   app.config['TEMPLATES_AUTO_RELOAD'] = True
-  socketio.run(app, port=os.getenv("PORT", default=5000))
+  socketio.run(app, host="0.0.0.0", port=os.getenv("PORT", default=5000))
