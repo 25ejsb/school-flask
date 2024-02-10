@@ -8,6 +8,6 @@ Werkzeug
 eventlet
 Flask-SocketIO
 cmake
-pyarrow
+pyarrow==14.0.0
 pandas
 pytz
