@@ -8,5 +8,6 @@ Werkzeug
 eventlet
 Flask-SocketIO
 pandas
+cmake
 pyarrow
 pytz
