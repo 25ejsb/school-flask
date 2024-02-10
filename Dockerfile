@@ -1,4 +1,4 @@
-FROM python:3-alpine AS builder
+FROM python:3-alpine3.10 AS builder
  
 WORKDIR /app
  
@@ -7,10 +7,11 @@ ENV VIRTUAL_ENV=/app/venv
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
  
 COPY requirements.txt .
+RUN python -m pip install --upgrade pip
 RUN pip install -r requirements.txt
  
 # Stage 2
-FROM python:3-alpine AS runner
+FROM python:3-alpine3.10 AS runner
  
 WORKDIR /app
  
@@ -23,4 +24,4 @@ ENV FLASK_APP=app/app.py
  
 EXPOSE 8080
  
-CMD ["gunicorn", "--bind" , ":8080", "--workers", "2", "app:app"]
+CMD ["gunicorn", "--worker-class" , "eventlet", "-w", "1", "app:app"]
