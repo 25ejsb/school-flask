@@ -8,7 +8,7 @@ import os
 
 socketio = SocketIO(app, debug=True)
 
-data = pd.read_csv("data.csv")
+data = pd.read_csv("./data.csv")
 
 def in_between(now, start, end):
   return start <= now <= end
