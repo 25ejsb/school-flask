@@ -1,6 +1,7 @@
 FROM python:3-alpine AS builder
 
 ENV USER=10014
+ENV PATH="/school-flask/bin/activate"
 
 USER 10014
  
