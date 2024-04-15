@@ -2,7 +2,6 @@ FROM python:3-alpine AS builder
 
 ENV USER=10014
 
-RUN useradd -ms /bin/bash 10014
 USER 10014
  
 WORKDIR .
