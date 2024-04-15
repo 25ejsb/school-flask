@@ -1,7 +1,7 @@
 FROM python:3-alpine AS builder
 
-RUN useradd -ms /bin/bash newuser -u 10001
-USER newuser
+RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1001 ubuntu
+USER ubuntu
  
 WORKDIR .
 COPY . .
