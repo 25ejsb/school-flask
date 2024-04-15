@@ -1,6 +1,6 @@
 FROM python:3-alpine AS builder
 
-RUN useradd -ms /bin/bash newuser
+RUN useradd -ms /bin/bash newuser -u 10001
 USER newuser
  
 WORKDIR .
