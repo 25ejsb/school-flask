@@ -1,4 +1,8 @@
 FROM python:3-alpine AS builder
+
+RUN useradd -ms /bin/bash newuser
+USER newuser
+WORKDIR /home/newuser
  
 WORKDIR .
 COPY . .
