@@ -1,0 +1,14 @@
+{
+    "id": "a97929f7-bcd6-42e6-9fed-9a36c990db5f",
+    "orgId": 30622,
+    "name": "school-flask",
+    "version": "1.0.0",
+    "createdDate": "2024-04-15T01:20:09.045Z",
+    "handler": "schoolflask",
+    "region": "US",
+    "description": " ",
+    "repository": "school-flask",
+    "branch": "main",
+    "gitProvider": "github",
+    "gitOrganization": "25ejsb"
+}
