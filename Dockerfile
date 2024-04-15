@@ -1,6 +1,8 @@
 FROM python:3-alpine AS builder
 
-RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1001 ubuntu
+ENV USER=10014
+
+RUN useradd -rm -d /home/10014 -s /bin/bash -g root -G sudo -u 10014
 USER ubuntu
  
 WORKDIR .
