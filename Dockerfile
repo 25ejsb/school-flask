@@ -1,14 +1,17 @@
-FROM python:3-alpine AS builder
+FROM ubuntu:latest
 
 ENV USER=10014
 
 USER 10014
+
+RUN sudo apt update
+RUN sudo apt install python3 python3-pip gunicorn -y
  
 WORKDIR /flask-app
 RUN python3 -m venv env
 RUN source ./env/bin/activate 
 COPY requirements.txt requirements.txt
-RUN sudo pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 COPY . .
  
