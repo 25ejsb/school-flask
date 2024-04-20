@@ -1,11 +1,8 @@
-FROM getsentry/snuba:22.6.0
+FROM python:3.10-slim-buster
 
 ENV USER=10014
 
 USER 10014
-
-RUN apt update
-RUN apt install python3 python3-pip gunicorn -y
  
 WORKDIR /flask-app
 RUN python3 -m venv env
