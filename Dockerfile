@@ -4,8 +4,9 @@ ENV USER=10014
 
 USER 10014
  
-
 WORKDIR /flask-app
+RUN python3 -m venv env
+RUN source ./env/bin/activate 
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
