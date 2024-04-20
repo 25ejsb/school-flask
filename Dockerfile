@@ -4,8 +4,8 @@ ENV USER=10014
 
 USER 10014
 
-RUN sudo apt update
-RUN sudo apt install python3 python3-pip gunicorn -y
+RUN apt update
+RUN apt install python3 python3-pip gunicorn -y
  
 WORKDIR /flask-app
 RUN python3 -m venv env
