@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM getsentry/snuba:22.6.0
 
 ENV USER=10014
 
