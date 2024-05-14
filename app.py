@@ -4,9 +4,7 @@ import pandas as pd
 from pytz import timezone
 from flask_socketio import SocketIO, emit
 app = Flask(__name__)
-import requests, json, os, dotenv, python_weather, asyncio
-
-dotenv.load_dotenv()
+import requests, json, os
 
 api_key = os.environ.get("api_key")
 
