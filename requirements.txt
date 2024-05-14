@@ -1,6 +1,5 @@
 click
 Flask
-asgiref
 gunicorn
 itsdangerous
 Jinja2
@@ -10,6 +9,5 @@ eventlet
 Flask-SocketIO
 pandas
 pytz
-python-weather
 requests
 dotenv
