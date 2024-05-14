@@ -6,18 +6,37 @@
     <title>Epstein Hillel Calendar</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="/static/main.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">    
     <link rel="stylesheet" href="/static/style.css" type="text/css">
 </head>
 <body>
     <main>
         <div class="background-img">&nbsp;</div>
         <div class="panel">
-            <h1>Epstein Hillel School</h1>
-            <h2></h2>
-            <h4 style="color: yellow; font-size: 1.5rem;">Yellow - 8th Special</h4>
-            <h4 style="color: #e0464d; font-size: 1.5rem;">Red - 7/8th grade</h4>
-            <h4 style="color: #425beb; font-size: 1.5rem;">Blue - 6th grade</h4>
-            <h4 style="color: #1aa356; font-size: 1.5rem; margin-bottom: 2rem;">Green - 5th grade</h3>
+            <h1>Weather</h1>
+            <div class="weather">
+                <div class="weather-min">
+                    <h2>Min</h2>
+                    <h1>??</h1>
+                </div>
+                <div class="weather-current">
+                    <h2>Current</h2>
+                    <h1>??</h1>
+                    <h3>Feeling</h3>
+                    <h3 class="weather-feeling">??</h3>
+                </div>
+                <div class="weather-max">
+                    <h2>Max</h2>
+                    <h1>??</h1>
+                </div>
+            </div>
+            <h1>Classes</h1>
+            <h4 style="color: yellow; font-size: 1.5rem;">Yellow - <p style="color: white; display: inline-block;">8th Special</p></h4>
+            <h4 style="color: #e0464d; font-size: 1.5rem;">Red - <p style="color: white; display: inline-block;">7/8th grade</p></h4>
+            <h4 style="color: #425beb; font-size: 1.5rem;">Blue - <p style="color: white; display: inline-block;">6th Special</p></h4>
+            <h4 style="color: #1aa356; font-size: 1.5rem; margin-bottom: 2rem;">Green - <p style="color: white; display: inline-block;">5th Special</p></h3>
             {% for i in range(length) %}
             {% set details = [data[data.Day == "Monday"].Time.value_counts().index.tolist(), data[data.Day == "Monday"].Class.values.tolist()] %}
             {% if day == "Monday" and righttime == details[0][i] %}
@@ -71,12 +90,12 @@
             {% if day == "Friday" and righttime == details5[0][i] %}
             <h2 class="student-subjects">
                 {% if details5[1][i].split(" - ")[1].find("/") | string != "-1": %}
-                <h2 class="student-subjects" style="color: yellow; margin-bottom: 0;">8th Special - {{ details5[1][i].split(" - ")[1] | safe }}</h2><br class="student-subjects">
+                <h2 class="student-subjects" style="color: yellow; margin-bottom: 0;">8th Special - <p class="color: white;">{{ details5[1][i].split(" - ")[1] | safe }}</p></h2><br class="student-subjects">
                 {% else %}
-                <h2 class="student-subjects" style="color: #e0464d; margin-bottom: 0;">7-8th - {{ details5[1][i].split(" - ")[1] | safe }}</h2><br class="student-subjects">
+                <h2 class="student-subjects" style="color: #e0464d; margin-bottom: 0;">7-8th - <p style="color: white;">{{ details5[1][i].split(" - ")[1] | safe }}</p></h2><br class="student-subjects">
                 {% endif %}
-                <h2 class="student-subjects" style="color: #425beb; margin-bottom: 0;">6th - {{ details5[1][i].split(" - ")[3] | safe }}</h2><br class="student-subjects">
-                <h2 class="student-subjects" style="color: #1aa356; margin-bottom: 0;">5th - {{ details5[1][i].split(" - ")[5] | safe }}</h2><br class="student-subjects">
+                <h2 class="student-subjects" style="color: #425beb; margin-bottom: 0;">6th - <p style="color: white;">{{ details5[1][i].split(" - ")[3] | safe }}</p></h2><br class="student-subjects">
+                <h2 class="student-subjects" style="color: #1aa356; margin-bottom: 0;">5th - <p style="color: white;">{{ details5[1][i].split(" - ")[5] | safe }}</p></h2><br class="student-subjects">
             </h2>
             {% endif %}
             {% endfor %}
@@ -86,119 +105,123 @@
             <h2 class="student-subjects">Have a good weekend!</h2>
             {% endif %}
         </div>
-        <div class="calendar">
-            <div class="blocks">
-                <h3>Blocks</h3>
-                {% for i in data.Block.value_counts().index.tolist() %}
-                <h3>Block {{ i }}</h3>
-                {% endfor %}
-            </div>
-            <div class="main-calendar">
-                <div class="days">
-                    {% for i in data.Day.value_counts().index.tolist() %}
-                    <h3>{{ i }}</h3>
+        <div class="cal-right">
+            <h1>Epstein Hillel School</h1>
+                <b><h2></h2></b>
+            <div class="calendar">
+                <div class="blocks">
+                    <h3>Blocks</h3>
+                    {% for i in data.Block.value_counts().index.tolist() %}
+                    <h3>Block {{ i }}</h3>
                     {% endfor %}
                 </div>
-                <div class="days-div">
-                    <div class="monday">
-                        {% set details = [data[data.Day == "Monday"].Time.value_counts().index.tolist(), data[data.Day == "Monday"].Class.values.tolist()] %}
-                        {% for i in range(length) %}
-                        <div class="block" 
-                        style="{% if day == 'Monday' and righttime == details[0][i] %}
-                        background-color: rgba(120, 120, 120, 0.7);
-                        {% endif %}">
-                            <p>{{ details[0][i] }}</p>
-                            <p>
-                                {% if details[1][i].split(" - ")[1].find("/") | string != "-1": %}
-                                <p style="color: #e6d709; margin-bottom: 2px; font-size: 0.6rem;">{{ details[1][i].split(" - ")[1] | safe }}</p>
-                                {% else %}
-                                <p style="color: #e0464d; margin-bottom: 2px; font-size: 0.6rem;">{{ details[1][i].split(" - ")[1] | safe }}</p>
-                                {% endif %}
-                                <p style="color: #425beb; margin-bottom: 2px; font-size: 0.6rem;">{{ details[1][i].split(" - ")[3] | safe }}</p>
-                                <p style="color: #1aa356; font-size: 0.6rem;">{{ details[1][i].split(" - ")[5] | safe }}</p>
-                            </p>
-                        </div>
+                <div class="main-calendar">
+                    <div class="days">
+                        {% for i in data.Day.value_counts().index.tolist() %}
+                        <h3>{{ i }}</h3>
                         {% endfor %}
                     </div>
-                    <div class="tuesday">
-                        {% set details2 = [data[data.Day == "Tuesday"].Time.value_counts().index.tolist(), data[data.Day == "Tuesday"].Class.values.tolist()] %}
-                        {% for i in range(length) %}
-                        <div class="block" 
-                        style="{% if day == 'Tuesday' and righttime == details2[0][i] %}
-                        background-color: rgba(120, 120, 120, 0.7);
-                        {% endif %}">
-                          <p>{{ details2[0][i] }}</p>
-                          <p>
-                            {% if details2[1][i].split(" - ")[1].find("/") | string != "-1": %}
-                            <p style="color: #e6d709; margin-bottom: 2px; font-size: 0.6rem;">{{ details2[1][i].split(" - ")[1] | safe }}</p>
-                            {% else %}
-                            <p style="color: #e0464d; margin-bottom: 2px; font-size: 0.6rem;">{{ details2[1][i].split(" - ")[1] | safe }}</p>
-                            {% endif %}
-                            <p style="color: #425beb; margin-bottom: 2px; font-size: 0.6rem;">{{ details2[1][i].split(" - ")[3] | safe }}</p>
-                            <p style="color: #1aa356; font-size: 0.6rem;">{{ details2[1][i].split(" - ")[5] | safe }}</p>
-                        </p>
+                    <div class="days-div">
+                        <div class="monday">
+                            {% set details = [data[data.Day == "Monday"].Time.value_counts().index.tolist(), data[data.Day == "Monday"].Class.values.tolist()] %}
+                            {% for i in range(length) %}
+                            <div class="block" 
+                            style="{% if day == 'Monday' and righttime == details[0][i] %}
+                            background-color: rgba(120, 120, 120, 0.7);
+                            {% endif %}">
+                                <p>{{ details[0][i] }}</p>
+                                <p>
+                                    {% if details[1][i].split(" - ")[1].find("/") | string != "-1": %}
+                                    <p style="color: #e6d709; font-size: 0.6rem;">{{ details[1][i].split(" - ")[1] | safe }}</p>
+                                    {% else %}
+                                    <p style="color: #e0464d; font-size: 0.6rem;">{{ details[1][i].split(" - ")[1] | safe }}</p>
+                                    {% endif %}
+                                    <p style="color: #425beb; font-size: 0.6rem;">{{ details[1][i].split(" - ")[3] | safe }}</p>
+                                    <p style="color: #1aa356; font-size: 0.6rem;">{{ details[1][i].split(" - ")[5] | safe }}</p>
+                                </p>
+                            </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
-                    </div>
-                    <div class="wednesday">
-                        {% set details3 = [data[data.Day == "Wednesday"].Time.value_counts().index.tolist(), data[data.Day == "Wednesday"].Class.values.tolist()] %}
-                        {% for i in range(length) %}
-                        <div class="block"
-                        style="{% if day == 'Wednesday' and righttime == details3[0][i] %}
-                        background-color: rgba(120, 120, 120, 0.7);
-                        {% endif %}">
-                            <p>{{ details3[0][i] }}</p>
-                            <p>
-                                {% if details3[1][i].split(" - ")[1].find("/") | string != "-1": %}
-                                <p style="color: #e6d709; margin-bottom: 2px; font-size: 0.6rem;">{{ details3[1][i].split(" - ")[1] | safe }}</p>
+                        <div class="tuesday">
+                            {% set details2 = [data[data.Day == "Tuesday"].Time.value_counts().index.tolist(), data[data.Day == "Tuesday"].Class.values.tolist()] %}
+                            {% for i in range(length) %}
+                            <div class="block" 
+                            style="{% if day == 'Tuesday' and righttime == details2[0][i] %}
+                            background-color: rgba(120, 120, 120, 0.7);
+                            {% endif %}">
+                              <p>{{ details2[0][i] }}</p>
+                              <p>
+                                {% if details2[1][i].split(" - ")[1].find("/") | string != "-1": %}
+                                <p style="color: #e6d709; font-size: 0.6rem;">{{ details2[1][i].split(" - ")[1] | safe }}</p>
                                 {% else %}
-                                <p style="color: #e0464d; margin-bottom: 2px; font-size: 0.6rem;">{{ details3[1][i].split(" - ")[1] | safe }}</p>
+                                <p style="color: #e0464d; font-size: 0.6rem;">{{ details2[1][i].split(" - ")[1] | safe }}</p>
                                 {% endif %}
-                                <p style="color: #425beb; margin-bottom: 2px; font-size: 0.6rem;">{{ details3[1][i].split(" - ")[3] | safe }}</p>
-                                <p style="color: #1aa356; font-size: 0.6rem;">{{ details3[1][i].split(" - ")[5] | safe }}</p>
+                                <p style="color: #425beb; font-size: 0.6rem;">{{ details2[1][i].split(" - ")[3] | safe }}</p>
+                                <p style="color: #1aa356; font-size: 0.6rem;">{{ details2[1][i].split(" - ")[5] | safe }}</p>
                             </p>
+                            </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
-                    </div>
-                    <div class="thursday">
-                        {% set details4 = [data[data.Day == "Thursday"].Time.value_counts().index.tolist(), data[data.Day == "Thursday"].Class.values.tolist()] %}
-                        {% for i in range(length) %}
-                        <div class="block" 
-                        style="{% if day == 'Thursday' and righttime == details4[0][i] %}
-                        background-color: rgba(120, 120, 120, 0.7);
-                        {% endif %}">
-                            <p>{{ details4[0][i] }}</p>
-                            <p>
-                                {% if details4[1][i].split(" - ")[1].find("/") | string != "-1": %}
-                                <p style="color: #e6d709; margin-bottom: 2px; font-size: 0.6rem;">{{ details4[1][i].split(" - ")[1] | safe }}</p>
-                                {% else %}
-                                <p style="color: #e0464d; margin-bottom: 2px; font-size: 0.6rem;">{{ details4[1][i].split(" - ")[1] | safe }}</p>
-                                {% endif %}
-                                <p style="color: #425beb; margin-bottom: 2px; font-size: 0.6rem;">{{ details4[1][i].split(" - ")[3] | safe }}</p>
-                                <p style="color: #1aa356; font-size: 0.6rem;">{{ details4[1][i].split(" - ")[5] | safe }}</p>
-                            </p>
+                        <div class="wednesday">
+                            {% set details3 = [data[data.Day == "Wednesday"].Time.value_counts().index.tolist(), data[data.Day == "Wednesday"].Class.values.tolist()] %}
+                            {% for i in range(length) %}
+                            <div class="block"
+                            style="{% if day == 'Wednesday' and righttime == details3[0][i] %}
+                            background-color: rgba(120, 120, 120, 0.7);
+                            {% endif %}">
+                                <p>{{ details3[0][i] }}</p>
+                                <p>
+                                    {% if details3[1][i].split(" - ")[1].find("/") | string != "-1": %}
+                                    <p style="color: #e6d709; font-size: 0.6rem;">{{ details3[1][i].split(" - ")[1] | safe }}</p>
+                                    {% else %}
+                                    <p style="color: #e0464d; font-size: 0.6rem;">{{ details3[1][i].split(" - ")[1] | safe }}</p>
+                                    {% endif %}
+                                    <p style="color: #425beb; font-size: 0.6rem;">{{ details3[1][i].split(" - ")[3] | safe }}</p>
+                                    <p style="color: #1aa356; font-size: 0.6rem;">{{ details3[1][i].split(" - ")[5] | safe }}</p>
+                                </p>
+                            </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
-                    </div>
-                    <div class="friday">
-                        {% set details5 = [data[data.Day == "Friday"].Time.value_counts().index.tolist(), data[data.Day == "Friday"].Class.values.tolist()] %}
-                        {% for i in range(length) %}
-                        <div class="block" 
-                        style="{% if day == 'Friday' and righttime == details5[0][i] %}
-                        background-color: rgba(120, 120, 120, 0.7);
-                        {% endif %}">
-                            <p>{{ details5[0][i] }}</p>
-                            <p>
-                                {% if details5[1][i].split(" - ")[1].find("/") | string != "-1": %}
-                                <p style="color: #e6d709; margin-bottom: 2px; font-size: 0.6rem;">{{ details5[1][i].split(" - ")[1] | safe }}</p>
-                                {% else %}
-                                <p style="color: #e0464d; margin-bottom: 2px; font-size: 0.6rem;">{{ details5[1][i].split(" - ")[1] | safe }}</p>
-                                {% endif %}
-                                <p style="color: #425beb; margin-bottom: 2px; font-size: 0.6rem;">{{ details5[1][i].split(" - ")[3] | safe }}</p>
-                                <p style="color: #1aa356; font-size: 0.6rem;">{{ details5[1][i].split(" - ")[5] | safe }}</p>
-                            </p>
+                        <div class="thursday">
+                            {% set details4 = [data[data.Day == "Thursday"].Time.value_counts().index.tolist(), data[data.Day == "Thursday"].Class.values.tolist()] %}
+                            {% for i in range(length) %}
+                            <div class="block" 
+                            style="{% if day == 'Thursday' and righttime == details4[0][i] %}
+                            background-color: rgba(120, 120, 120, 0.7);
+                            {% endif %}">
+                                <p>{{ details4[0][i] }}</p>
+                                <p>
+                                    {% if details4[1][i].split(" - ")[1].find("/") | string != "-1": %}
+                                    <p style="color: #e6d709; font-size: 0.6rem;">{{ details4[1][i].split(" - ")[1] | safe }}</p>
+                                    {% else %}
+                                    <p style="color: #e0464d; font-size: 0.6rem;">{{ details4[1][i].split(" - ")[1] | safe }}</p>
+                                    {% endif %}
+                                    <p style="color: #425beb; font-size: 0.6rem;">{{ details4[1][i].split(" - ")[3] | safe }}</p>
+                                    <p style="color: #1aa356; font-size: 0.6rem;">{{ details4[1][i].split(" - ")[5] | safe }}</p>
+                                </p>
+                            </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
+                        <div class="friday">
+                            {% set details5 = [data[data.Day == "Friday"].Time.value_counts().index.tolist(), data[data.Day == "Friday"].Class.values.tolist()] %}
+                            {% for i in range(length) %}
+                            <div class="block" 
+                            style="{% if day == 'Friday' and righttime == details5[0][i] %}
+                            background-color: rgba(120, 120, 120, 0.7);
+                            {% endif %}">
+                                <p>{{ details5[0][i] }}</p>
+                                <p>
+                                    {% if details5[1][i].split(" - ")[1].find("/") | string != "-1": %}
+                                    <p style="color: #e6d709; font-size: 0.6rem;">{{ details5[1][i].split(" - ")[1] | safe }}</p>
+                                    {% else %}
+                                    <p style="color: #e0464d; font-size: 0.6rem;">{{ details5[1][i].split(" - ")[1] | safe }}</p>
+                                    {% endif %}
+                                    <p style="color: #425beb; font-size: 0.6rem;">{{ details5[1][i].split(" - ")[3] | safe }}</p>
+                                    <p style="color: #1aa356; font-size: 0.6rem;">{{ details5[1][i].split(" - ")[5] | safe }}</p>
+                                </p>
+                            </div>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -244,24 +267,24 @@
                             if (newParas[2].includes("/") === true) {
                                 var grade8 = document.createElement("h2")
                                 grade8.style = "color: yellow; margin-bottom: 0; margin-top: 1rem;"
-                                grade8.textContent = "8th Special - " + newParas[2]
+                                grade8.innerHTML = "8th Special - <p style='color: white; display: inline-block;'>" + newParas[2] + "</p>"
                                 grade8.classList.add("student-subjects")
                                 document.querySelector(".panel").appendChild(grade8)
                             } else {
                                 var grade7 = document.createElement("h2")
                                 grade7.style = "color: #e0464d; margin-bottom: 0; margin-top: 1rem;"
-                                grade7.textContent = "7-8th - " + newParas[2]
+                                grade7.innerHTML = "7-8th - <p style='color: white; display: inline-block;'>" + newParas[2] + "</p>"
                                 grade7.classList.add("student-subjects")
                                 document.querySelector(".panel").appendChild(grade7)
                             }
                             var grade6 = document.createElement("h2")
                             grade6.style = "color: #425beb; margin-bottom: 0; margin-top: 1rem;"
-                            grade6.textContent = "6th - " + newParas[3]
+                            grade6.innerHTML = "6th - <p style='color: white; display: inline-block;'>" + newParas[3] + "</p>"
                             grade6.classList.add("student-subjects")
                             document.querySelector(".panel").appendChild(grade6)
                             var grade5 = document.createElement("h2")
                             grade5.style = "color: #1aa356; margin-bottom: 0; margin-top: 1rem;"
-                            grade5.textContent = "5th - " + newParas[4]
+                            grade5.innerHTML = "5th - <p style='color: white; display: inline-block;'>" + newParas[4] + "</p>"
                             grade5.classList.add("student-subjects")
                             document.querySelector(".panel").appendChild(grade5)
                         }

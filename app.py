@@ -4,7 +4,11 @@ import pandas as pd
 from pytz import timezone
 from flask_socketio import SocketIO, emit
 app = Flask(__name__)
-import os
+import requests, json, os, dotenv, python_weather, asyncio
+
+dotenv.load_dotenv()
+
+api_key = os.environ.get("api_key")
 
 socketio = SocketIO(app, debug=True)
 
@@ -74,7 +78,6 @@ def getdata():
         hour2 += 12
       if in_between(timenow, time(hour1, minute1), time(hour2, minute2)):
         righttime = i
-        print(righttime)
         break
   if day == "Friday":
     for i in data[data.Day == "Friday"].Time.values.tolist():
@@ -90,7 +93,6 @@ def getdata():
       if in_between(timenow, time(hour1, minute1), time(hour2, minute2)):
         righttime = i
         break
-  print(datetime.now(timeinzone).time())
   emit("retrieve_data", {"day": day, "righttime": righttime, "time": str(datetime.now(timeinzone).time())}, broadcast=True)
 
 @app.route('/')
@@ -154,7 +156,6 @@ def home():
         hour2 += 12
       if in_between(timenow, time(hour1, minute1), time(hour2, minute2)):
         righttime = i
-        print(righttime)
         break
   if day == "Friday":
     for i in data[data.Day == "Friday"].Time.values.tolist():
@@ -178,7 +179,8 @@ def gettime():
   timeinzone = timezone("US/Eastern")
   time = datetime.now(timeinzone).strftime("%A, %B %d, %Y, %I:%M:%S %p")
   return jsonify({"Content": time})
+
 if __name__ == "__main__":
   app.jinja_env.auto_reload = True
   app.config['TEMPLATES_AUTO_RELOAD'] = True
-  socketio.run(app, host="0.0.0.0", port=8080)
+  socketio.run(app, debug=True, port=8080)

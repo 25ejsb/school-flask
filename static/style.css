@@ -1,5 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Montserrat);
-
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +5,14 @@
 }
 
 body {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Poppins", sans-serif;
+}
+
+.panel h1 {
+    color: white;
+    font-size: 3rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
 }
 
 .background-img {
@@ -17,17 +22,19 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url(/static/images/background.png);
-  filter: brightness(3);
+  background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url(https://s3-media0.fl.yelpcdn.com/bphoto/cS16JJayk59gyZZRhuAS8g/l.jpg);
   background-size: 100% 100%;
   background-position: center;
 }
 
+.student-subjects {
+    color: white;
+}
+
 main {
-    
     width: 100%;
     min-height: 50rem;
-  height: 100vh;
+    height: 100vh;
     background-size: 100% 100%;
     background-position: center;
     display: flex;
@@ -45,7 +52,19 @@ main {
     height: 80%;
 }
 
-main h1 {
+.panel h2 {
+    font-size: 2rem;
+}
+
+.cal-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+}
+
+main .cal-right h1 {
     background-image: linear-gradient(to right, #00a8a8, #00a8a8, #21c24c, #118530);
     -webkit-background-clip: text;
     color: transparent;
@@ -57,10 +76,10 @@ main h1 {
     text-shadow: -3px -3px 0.1rem rgba(255, 255, 255, 0.9);
 }
 
-main h2 {
+main .cal-right h2 {
     color: white;
     font-weight: 900;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     margin-bottom: 2rem;
     text-align: center;
 }
@@ -71,10 +90,13 @@ main h3 {
     text-align: center;
     height: 15%;
     width: 100%;
-    border: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.blocks h3 {
+    border-right: 2px solid black;
 }
 
 .calendar {
@@ -84,7 +106,8 @@ main h3 {
     justify-content: start;
     align-items: start;
     overflow: hidden;
-    background-color: white;
+    background-color: rgb(245, 245, 245);
+    border-radius: 2rem;
 }
 
 .blocks {
@@ -116,7 +139,7 @@ main h3 {
 }
 
 .main-calendar p {
-    font-size: .85rem;
+    font-size: .75rem;
 }
 
 .main-calendar .block {
@@ -126,9 +149,12 @@ main h3 {
     align-items: center;
     color: black;
     font-weight: 800;
-    border: 2px solid white;
     flex-direction: column;
     text-align: center;
+}
+
+.monday .block, .tuesday .block, .wednesday .block, .thursday .block {
+    border-right: 2px solid black;
 }
 
 .monday, .tuesday, .wednesday, .thursday, .friday {
@@ -138,10 +164,63 @@ main h3 {
 .days-div {
     width: 100%;
     display: flex;
-  height: 70%;
+    height: 70%;
 }
 
 .panel img {
   width: 10rem;
   height: 10rem;
+}
+
+.weather {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid white;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+.weather h1 {
+    background-image: linear-gradient(to right, #00a8a8, #00a8a8, #21c24c, #118530);
+    text-shadow: 2px 2px 0.1rem rgba(255, 255, 255, 0.9);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 4rem;
+    width: 100%;
+    text-align: center;
+}
+
+.weather h3 {
+    color: white;
+    text-transform: uppercase;
+    width: 100%;
+    text-align: center;
+}
+
+.weather-feeling {
+    background-image: linear-gradient(to right, #00a8a8, #00a8a8, #21c24c, #118530);
+    text-shadow: 2px 2px 0.1rem rgba(255, 255, 255, 0.9);
+    -webkit-background-clip: text;
+    color: transparent !important;
+    width: 100%;
+    text-align: center;
+}
+
+.weather h2 {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
+.weather div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 10rem;
 }
