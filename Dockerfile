@@ -1,4 +1,4 @@
-FROM python:3.11-alpine
+FROM python:3.8-slim-buster
 
 ENV USER=10014
 
