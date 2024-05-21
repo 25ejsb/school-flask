@@ -35,8 +35,8 @@
             <h1>Classes</h1>
             <h4 style="color: yellow; font-size: 1.5rem;">Yellow - <p style="color: white; display: inline-block;">8th Special</p></h4>
             <h4 style="color: #e0464d; font-size: 1.5rem;">Red - <p style="color: white; display: inline-block;">7/8th grade</p></h4>
-            <h4 style="color: #425beb; font-size: 1.5rem;">Blue - <p style="color: white; display: inline-block;">6th Special</p></h4>
-            <h4 style="color: #1aa356; font-size: 1.5rem; margin-bottom: 2rem;">Green - <p style="color: white; display: inline-block;">5th Special</p></h3>
+            <h4 style="color: #425beb; font-size: 1.5rem;">Blue - <p style="color: white; display: inline-block;">6th grade</p></h4>
+            <h4 style="color: #1aa356; font-size: 1.5rem; margin-bottom: 2rem;">Green - <p style="color: white; display: inline-block;">5th grade</p></h3>
             {% for i in range(length) %}
             {% set details = [data[data.Day == "Monday"].Time.value_counts().index.tolist(), data[data.Day == "Monday"].Class.values.tolist()] %}
             {% if day == "Monday" and righttime == details[0][i] %}

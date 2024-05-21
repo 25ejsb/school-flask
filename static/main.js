@@ -10,7 +10,7 @@ setInterval(async function() {
     let promise = Promise.resolve(response.json())
     promise.then(data => {
         document.querySelector("main .cal-right h2").textContent = data['Content']
-        var caltext = ata["Content"].split(", ")[3].split(" ")[0]
+        var caltext = data["Content"].split(", ")[3].split(" ")[0]
         var ampm = data["Content"].split(", ")[3].split(" ")[1]
         console.log(caltext)
         if (["02:59:50", "02:59:51", "02:59:52", "02:59:53", "02:59:54", "02:59:55", "02:59:56", "02:59:57", "02:59:58", "02:59:59"].includes(caltext) && ampm === "PM") {
